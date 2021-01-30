@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="MyApp:jar">
+    <output-path>$PROJECT_DIR$/../javaApp</output-path>
+    <root id="archive" name="MyApp.jar">
+      <element id="module-output" name="MyApp" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../jar/mysql-connector-java-8.0.22/mysql-connector-java-8.0.22.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../jar/poi-bin-4.1.2-20200217/poi-4.1.2/poi-4.1.2.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

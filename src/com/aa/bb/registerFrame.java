@@ -5,22 +5,34 @@ import java.awt.*;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+/**
+ * 登录窗口
+ */
 public class registerFrame extends JFrame {
+    /**
+     * 窗口大小
+     */
     private static final int Default_width = 300;
     private static final int Default_height = 300;
 
+    //获取数据库连接类及用户Dao类对象
     private final dbConnect dbcon = new dbConnect();
     private final UserDaoInt userDao = new UserDaoInt();
 
+    //各种组件
     JTextField userField;
     JPasswordField passwordField, repeatField;
     JLabel userLabel, passwordLabel,repeatLabel, welLabel;
     JPanel row1, row2, row3, row4, row5;
     JButton confirmButton, exitButton;
 
+    /**
+     * registerFrame构造方法
+     */
     public registerFrame(){
-        setLayout(new GridLayout(5,1));
+        setLayout(new GridLayout(5,1));  //设置窗口布局
 
+        //设置各种组件
         welLabel = new JLabel("注册");
         Font welFont = new Font("宋体", Font.BOLD, 16);
         welLabel.setFont(welFont);
@@ -42,7 +54,7 @@ public class registerFrame extends JFrame {
         row3.add(passwordLabel);
         row3.add(passwordField);
 
-        repeatLabel = new JLabel("重复    密码");
+        repeatLabel = new JLabel("请 重复密码");
         repeatField = new JPasswordField(10);
         repeatField.setBackground(Color.PINK);
         row4 = new JPanel();
@@ -55,6 +67,7 @@ public class registerFrame extends JFrame {
         row5.add(confirmButton);
         row5.add(exitButton);
 
+        //添加confirmButton监听器,设置确认动作
         confirmButton.addActionListener(event ->
         {
             String username = userField.getText();
@@ -88,13 +101,13 @@ public class registerFrame extends JFrame {
                     dispose();
                 }
             }catch (SQLException e){
-                 e.printStackTrace();
+                 System.out.println(e.getMessage());
             }finally {
                 dbcon.closeConnect(con);
             }
         });
 
-        exitButton.addActionListener(event -> dispose());
+        exitButton.addActionListener(event -> dispose());  //添加exitButton监听器，设置退出窗口动作
 
         add(row1);
         add(row2);
